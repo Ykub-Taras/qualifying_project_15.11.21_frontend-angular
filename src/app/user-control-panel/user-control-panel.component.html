@@ -1,0 +1,141 @@
+<div class="controlPanelBlock">
+  <p class="controlPanelBlock__title"><b>{{panelName}}</b>
+    <button class="controlPanelBlock__closeButton" type="button" (click)="closePanel()"><img
+      src="../../assets/close-24px.svg" alt="closeLogo"></button>
+  </p>
+  <form [formGroup]="formUser">
+    <label>UserName*
+
+      <br>
+      <input type="text" formControlName="userName" class="controlPanelBlock__inputArea"
+             placeholder="Enter your User Name">
+    </label>
+
+    <div
+      *ngIf="formUser.controls['userName'].invalid && (formUser.controls['userName'].dirty || formUser.controls['userName'].touched)"
+      class="controlPanelBlock__warnings">
+      <div *ngIf="formUser.controls['userName'].errors?.['required']">
+        User Name is required.
+      </div>
+      <div *ngIf="formUser.controls['userName'].errors?.['minlength']">
+        User Name must be at least 2 characters long.
+      </div>
+      <div *ngIf="formUser.controls['userName'].errors?.['maxlength']">
+        User Name must be at most 30 characters long.
+      </div>
+      <div *ngIf="formUser.controls['userName'].errors?.['status']=='INVALID'">
+        User Name is invalid.
+      </div>
+    </div>
+
+    <label>First name*<br>
+      <input type="text" formControlName="firstName" class="controlPanelBlock__inputArea"
+             placeholder="Enter your First name">
+    </label>
+
+    <div
+      *ngIf="formUser.controls['firstName'].invalid && (formUser.controls['firstName'].dirty || formUser.controls['firstName'].touched)"
+      class="controlPanelBlock__warnings">
+      <div *ngIf="formUser.controls['firstName'].errors?.['required']">
+        First name is required.
+      </div>
+      <div *ngIf="formUser.controls['firstName'].errors?.['minlength']">
+        First name must be at least 2 characters long.
+      </div>
+      <div *ngIf="formUser.controls['firstName'].errors?.['maxlength']">
+        First name must be at most 30 characters long.
+      </div>
+      <div *ngIf="formUser.controls['firstName'].errors?.['status']=='INVALID'">
+        First name is invalid.
+      </div>
+    </div>
+
+    <label>Last name*<br>
+      <input type="text" formControlName="lastName" class="controlPanelBlock__inputArea"
+             placeholder="Enter your Last name">
+    </label>
+
+    <div
+      *ngIf="formUser.controls['lastName'].invalid && (formUser.controls['lastName'].dirty || formUser.controls['lastName'].touched)"
+      class="controlPanelBlock__warnings">
+      <div *ngIf="formUser.controls['lastName'].errors?.['required']">
+        Last name is required.
+      </div>
+      <div *ngIf="formUser.controls['lastName'].errors?.['minlength']">
+        Last name must be at least 2 characters long.
+      </div>
+      <div *ngIf="formUser.controls['lastName'].errors?.['maxlength']">
+        Last name must be at most 30 characters long.
+      </div>
+      <div *ngIf="formUser.controls['lastName'].errors?.['status']=='INVALID'">
+        Last name is invalid.
+      </div>
+    </div>
+
+    <label>Email*<br>
+      <input type="text" formControlName="email" class="controlPanelBlock__inputArea controlPanelBlock__inputArea_email"
+             placeholder="Enter your Email">
+    </label>
+
+    <div
+      *ngIf="formUser.controls['email'].invalid && (formUser.controls['email'].dirty || formUser.controls['email'].touched)"
+      class="controlPanelBlock__warnings">
+      <div *ngIf="formUser.controls['email'].errors?.['required']">
+        Email name is required.
+      </div>
+    </div>
+
+    <label>Type*<br>
+      <select class="controlPanelBlock__inputArea" name="select" formControlName="userType">
+        <option *ngFor="let state of states" [ngValue]="state">
+          {{ state }}
+        </option>
+      </select>
+    </label>
+
+    <div
+      *ngIf="formUser.controls['userType'].invalid && (formUser.controls['userType'].dirty || formUser.controls['userType'].touched)"
+      class="controlPanelBlock__warnings">
+      <div *ngIf="formUser.controls['userType'].errors?.['required']">
+        Role name is required.
+      </div>
+    </div>
+
+    <label>Password*<br>
+      <input type="password" formControlName="password" class="controlPanelBlock__inputArea"
+             placeholder="Enter Password">
+    </label>
+
+    <div
+      *ngIf="formUser.controls['password'].invalid && (formUser.controls['password'].dirty || formUser.controls['password'].touched)"
+      class="controlPanelBlock__warnings">
+      <div *ngIf="formUser.controls['password'].errors?.['required']">
+        Password name is required.
+      </div>
+    </div>
+
+
+    <label>Repeat password*<br>
+      <input type="password" formControlName="repeatedPassword" class="controlPanelBlock__inputArea"
+             placeholder="Repeat password">
+    </label>
+
+    <div
+      *ngIf="formUser.controls['repeatedPassword'].invalid && (formUser.controls['repeatedPassword'].dirty || formUser.controls['repeatedPassword'].touched)"
+      class="controlPanelBlock__warnings">
+      <div *ngIf="formUser.controls['repeatedPassword'].errors?.['required']">
+        Doubling of password is required.
+      </div>
+    </div>
+
+    <div class="controlPanelBlock__buttonField">
+      <button *ngIf="panelName!=='Create new user'" class="controlPanelBlock__button controlPanelBlock__button_red"
+              (click)="deleteUser()">Delete
+      </button>
+      <button *ngIf="panelName==='Create new user'" type="submit" class="controlPanelBlock__button"
+              [disabled]="formUser.invalid || !(password.value===repeatedPassword.value)" (click)="submitForm()">Create
+      </button>
+      <button *ngIf="panelName!=='Create new user'" class="controlPanelBlock__button" (click)="editUser()">Save</button>
+    </div>
+  </form>
+</div>

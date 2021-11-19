@@ -1,0 +1,15 @@
+a {
+  text-decoration: none
+}
+
+.userDetails {
+  display: flex;
+  padding: 26px;
+
+  &__item {
+    width: 20%;
+    color: #3F4254;
+    overflow: auto;
+    margin-right: 2px
+  }
+}

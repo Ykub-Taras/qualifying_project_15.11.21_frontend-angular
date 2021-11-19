@@ -1,0 +1,25 @@
+.titleBarBlock {
+  display: flex;
+  padding: 26px;
+
+  &__item {
+    width: 20%;
+    color: #A4A4B5;
+    text-transform: uppercase;
+    overflow: auto;
+    margin-right: 2px
+  }
+}
+
+.userItem {
+  margin: 2px 0;
+  background: #F4F5F8;
+  display: flex;
+  flex-direction: column;
+  height: 56px
+}
+
+.userItem:hover,
+{
+  background: #EFF0F4
+}

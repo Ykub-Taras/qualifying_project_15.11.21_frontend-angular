@@ -1,0 +1,13 @@
+<a [routerLink]="['', { outlets: { controlPanel: ['user', user.userName] } }]"
+   (click)="$event.preventDefault();saveChoice()">
+
+  <div class="userDetails">
+    <div class="userDetails__item">{{ user.userName}}</div>
+    <div class="userDetails__item">{{ user.firstName}}</div>
+    <div class="userDetails__item">{{ user.lastName}}</div>
+    <div class="userDetails__item">{{ user.email}}</div>
+    <div class="userDetails__item">{{ user.userType}}</div>
+  </div>
+
+</a>
+

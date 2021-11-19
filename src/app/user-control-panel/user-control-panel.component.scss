@@ -1,0 +1,64 @@
+.controlPanelBlock {
+  margin: 31px 26px;
+
+  &__title {
+    display: flex;
+    justify-content: space-between
+  }
+
+  &__warnings {
+    color: red;
+  }
+
+
+  &__closeButton {
+    border: none;
+    background: transparent;
+    cursor: pointer
+  }
+
+  &__inputArea {
+    margin: 12px 0;
+    height: 46px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background: #F3F6F9;
+
+    &_email {
+      background: url(../../assets/alternate_email_black_24dp.svg) no-repeat left #F3F6F9;
+      padding-left: 30px
+    }
+  }
+
+  &__buttonField {
+    margin: 33px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__button {
+    height: 46px;
+    width: 120px;
+    background: #2E8FF0;
+    box-shadow: 0 5px 8px #2E8FF029;
+    border-radius: 6px;
+    color: #FFFFFF;
+
+    &_red {
+      background: #F44682;
+    }
+  }
+
+  &__button:hover {
+    cursor: pointer;
+  }
+
+}
+
+button:disabled,
+button[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}

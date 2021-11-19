@@ -1,0 +1,37 @@
+@mixin insideContainerBlockStyle {
+  border-radius: 5px;
+  background: #FFFFFF;
+  overflow: auto
+}
+
+a {
+  text-decoration: none
+}
+
+.container {
+  display: flex;
+  height: 50vmax;
+  justify-content: space-between;
+  position: relative;
+
+  &__listBar {
+    @include insideContainerBlockStyle;
+    width: 66.5%;
+  }
+
+  &__createButton {
+    background: #2E8FF0;
+    color: #FFFFFF;
+    width: 120px;
+    height: 46px;
+    border-radius: 6px;
+    position: absolute;
+    left: 60%;
+    top: -64px;
+  }
+
+  &__controlPanel {
+    @include insideContainerBlockStyle;
+    width: 32%;
+  }
+}

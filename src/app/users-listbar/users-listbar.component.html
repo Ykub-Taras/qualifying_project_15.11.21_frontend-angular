@@ -1,0 +1,11 @@
+<div class="titleBarBlock">
+  <div class="titleBarBlock__item">USERNAME</div>
+  <div class="titleBarBlock__item">FIRST NAME</div>
+  <div class="titleBarBlock__item">LAST NAME</div>
+  <div class="titleBarBlock__item">EMAIL</div>
+  <div class="titleBarBlock__item">TYPE</div>
+</div>
+
+<div class="userItem" *ngFor="let user of users$ | async">
+  <app-user-details [user]="user"></app-user-details>
+</div>
