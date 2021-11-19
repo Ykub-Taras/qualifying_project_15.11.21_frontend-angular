@@ -12,6 +12,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class UserControlPanelComponent implements OnInit {
 
+  public error: any;
+  public success: any;
+
   panelName;
 
   states = ['Admin',
@@ -60,9 +63,11 @@ export class UserControlPanelComponent implements OnInit {
     })
   }
 
-  ngOnChanges(): void {}
+  ngOnChanges(): void {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   submitForm() {
     this.ServerDataSharingService.createNewUser(
@@ -72,16 +77,21 @@ export class UserControlPanelComponent implements OnInit {
       this.formUser.value.userName,
       this.formUser.value.userType,
       this.formUser.value.password
-    ).subscribe(value => console.log(value))
+    ).subscribe(success => {
+      this.success = success;
+    }, error => {
+      this.error = error;
+    });
 
     this.formUser.reset()
 
-    this.dataStoreService.rightSideBlockVisibility.next(false);
-
-    this.router.navigate(['']).then(() => {
-      window.location.reload();
-    });
-
+    setTimeout(() => {
+      this.dataStoreService.rightSideBlockVisibility.next(false);
+      this.router.navigate(['']).then(() => {
+          window.location.reload();
+        }
+      )
+    }, 10000);
   }
 
   closePanel() {
@@ -89,13 +99,21 @@ export class UserControlPanelComponent implements OnInit {
   }
 
   deleteUser() {
-    this.ServerDataSharingService.deleteUser(this.dataStoreService.choicedUser.getValue()._id).subscribe(value => console.log(value));
-
-    this.dataStoreService.rightSideBlockVisibility.next(false)
-
-    this.router.navigate(['']).then(() => {
-      window.location.reload();
+    this.ServerDataSharingService.deleteUser(this.dataStoreService.choicedUser.getValue()._id).subscribe(success => {
+      this.success = success;
+    }, error => {
+      this.error = error;
     });
+
+    this.formUser.reset()
+
+    setTimeout(() => {
+      this.dataStoreService.rightSideBlockVisibility.next(false);
+      this.router.navigate(['']).then(() => {
+          window.location.reload();
+        }
+      )
+    }, 10000);
   }
 
   editUser() {
@@ -106,14 +124,20 @@ export class UserControlPanelComponent implements OnInit {
       this.formUser.value.userName,
       this.formUser.value.userType,
       this.formUser.value.password
-    ).subscribe(value => console.log(value))
+    ).subscribe(success => {
+      this.success = success;
+    }, error => {
+      this.error = error;
+    });
 
     this.formUser.reset()
 
-    this.dataStoreService.rightSideBlockVisibility.next(false)
-
-    this.router.navigate(['']).then(() => {
-      window.location.reload();
-    });
+    setTimeout(() => {
+      this.dataStoreService.rightSideBlockVisibility.next(false);
+      this.router.navigate(['']).then(() => {
+          window.location.reload();
+        }
+      )
+    }, 10000);
   }
 }

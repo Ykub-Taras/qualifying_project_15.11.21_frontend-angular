@@ -1,3 +1,8 @@
+<div *ngIf="error" class="messagePromptWindow messagePromptWindow_Error">Status:{{ error?.status | json }}, Status
+  info: {{ error?.statusText | json }}
+  <br>Message: {{ error?.error?.message | json }}</div>
+<div *ngIf="success" class="messagePromptWindow messagePromptWindow_Success">Success: {{ success | json }}</div>
+
 <div class="controlPanelBlock">
   <p class="controlPanelBlock__title"><b>{{panelName}}</b>
     <button class="controlPanelBlock__closeButton" type="button" (click)="closePanel()"><img
@@ -128,8 +133,9 @@
       </div>
     </div>
 
-    <div [ngClass]="{'controlPanelBlock__buttonField_centreDisposition': panelName==='Create new user'}" class="controlPanelBlock__buttonField">
-<!--         -->
+    <div [ngClass]="{'controlPanelBlock__buttonField_centreDisposition': panelName==='Create new user'}"
+         class="controlPanelBlock__buttonField">
+      <!--         -->
       <button *ngIf="panelName!=='Create new user'" class="controlPanelBlock__button controlPanelBlock__button_red"
               (click)="deleteUser()">Delete
       </button>

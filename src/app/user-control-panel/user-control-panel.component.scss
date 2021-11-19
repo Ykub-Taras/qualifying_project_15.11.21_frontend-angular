@@ -1,3 +1,22 @@
+.messagePromptWindow {
+  height: 56px;
+  min-width: 20%;
+  border-radius: 6px;
+  top: -129px;
+  position: absolute;
+
+  &_Success {
+    background: #66BB6A;
+    right: 0;
+  }
+
+  &_Error {
+    background: #EF7DA0;
+    left: 0;
+  }
+}
+
+
 .controlPanelBlock {
   margin: 31px 26px;
 
