@@ -28,7 +28,8 @@
       <div *ngIf="formUser.controls['userName'].errors?.['maxlength']">
         User Name must be at most 30 characters long.
       </div>
-      <div *ngIf="formUser.controls['userName'].errors?.['status']=='INVALID'">
+      <!--      <div *ngIf="formUser.controls['userName'].errors?.['status']=='INVALID'">-->
+      <div *ngIf="userName.errors?.['pattern']">
         User Name is invalid.
       </div>
     </div>
@@ -50,7 +51,8 @@
       <div *ngIf="formUser.controls['firstName'].errors?.['maxlength']">
         First name must be at most 30 characters long.
       </div>
-      <div *ngIf="formUser.controls['firstName'].errors?.['status']=='INVALID'">
+      <!--      <div *ngIf="formUser.controls['firstName'].errors?.['status']=='INVALID'">-->
+      <div *ngIf="firstName.errors?.['pattern']">
         First name is invalid.
       </div>
     </div>
@@ -72,7 +74,8 @@
       <div *ngIf="formUser.controls['lastName'].errors?.['maxlength']">
         Last name must be at most 30 characters long.
       </div>
-      <div *ngIf="formUser.controls['lastName'].errors?.['status']=='INVALID'">
+      <!--      <div *ngIf="formUser.controls['lastName'].errors?.['status']=='INVALID'">-->
+      <div *ngIf="lastName.errors?.['pattern']">
         Last name is invalid.
       </div>
     </div>
@@ -87,6 +90,9 @@
       class="controlPanelBlock__warnings">
       <div *ngIf="formUser.controls['email'].errors?.['required']">
         Email name is required.
+      </div>
+      <div *ngIf="email.errors?.['pattern']">
+        Email is inconsistent!.
       </div>
     </div>
 
@@ -117,6 +123,9 @@
       <div *ngIf="formUser.controls['password'].errors?.['required']">
         Password name is required.
       </div>
+      <div *ngIf="password.errors?.['pattern']">
+        Password is inconsistent!.
+      </div>
     </div>
 
 
@@ -131,18 +140,27 @@
       <div *ngIf="formUser.controls['repeatedPassword'].errors?.['required']">
         Doubling of password is required.
       </div>
+      <div *ngIf="password.errors?.['pattern']">
+        Password is inconsistent!.
+      </div>
+      <div *ngIf="password.value!==repeatedPassword.value">
+        Complete doubling of password is required.
+      </div>
     </div>
 
     <div [ngClass]="{'controlPanelBlock__buttonField_centreDisposition': panelName==='Create new user'}"
          class="controlPanelBlock__buttonField">
-      <!--         -->
+
       <button *ngIf="panelName!=='Create new user'" class="controlPanelBlock__button controlPanelBlock__button_red"
               (click)="deleteUser()">Delete
       </button>
+
       <button *ngIf="panelName==='Create new user'" type="submit" class="controlPanelBlock__button"
               [disabled]="formUser.invalid || !(password.value===repeatedPassword.value)" (click)="submitForm()">Create
       </button>
+
       <button *ngIf="panelName!=='Create new user'" class="controlPanelBlock__button" (click)="editUser()">Save</button>
+
     </div>
   </form>
 </div>
