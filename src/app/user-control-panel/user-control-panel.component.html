@@ -128,7 +128,8 @@
       </div>
     </div>
 
-    <div class="controlPanelBlock__buttonField">
+    <div [ngClass]="{'controlPanelBlock__buttonField_centreDisposition': panelName==='Create new user'}" class="controlPanelBlock__buttonField">
+<!--         -->
       <button *ngIf="panelName!=='Create new user'" class="controlPanelBlock__button controlPanelBlock__button_red"
               (click)="deleteUser()">Delete
       </button>

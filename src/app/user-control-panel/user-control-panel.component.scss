@@ -35,6 +35,10 @@
     margin: 33px 0;
     display: flex;
     justify-content: space-between;
+
+    &_centreDisposition {
+      justify-content: center;
+    }
   }
 
   &__button {
