@@ -26,7 +26,7 @@ a {
     height: 46px;
     border-radius: 6px;
     position: absolute;
-    left: 60%;
+    left: calc(66.5% - 120px) ;
     top: -64px;
     cursor: pointer;
   }
